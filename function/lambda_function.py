@@ -5,5 +5,7 @@ def lambda_handler(event, context):
 
     if event["input"] == "Hello":
         return "World again"
+    if event["input"] == "Hi":
+        return "Hi there"    
     else:
         raise
