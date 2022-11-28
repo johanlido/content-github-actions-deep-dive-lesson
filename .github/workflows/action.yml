@@ -122,7 +122,7 @@ jobs:
           release_name: Release from ${{ github.run_number }}
           body: New release for ${{ github.sha }}. Release note on doc site
           draft: false
-          perrelease: false
+          prerelease: false
       - name: download artifact
         uses: actions/download-artifact@v2
         with:
