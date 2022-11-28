@@ -164,7 +164,13 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: create docs folder
+      - name: Check file existence
+        id: check_docs
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "docs"
+      - name: docs dir exists
+        if: steps.check_docs.outputs.files_exists == 'false'
         run: mkdir docs
       - name: convert md to html
         uses: docker://pandoc/core:2.9
