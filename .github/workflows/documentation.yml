@@ -2,7 +2,7 @@ name: Deploy documentation
 on:
   push:
     paths:
-      - userguide.md
+      - *.md
 
 jobs:
 
