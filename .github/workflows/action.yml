@@ -73,10 +73,16 @@ jobs:
           aws-region: eu-north-1
       - name: Create test function
         run: |
-            aws lambda create-function --function-name test-function \  
+          aws lambda create-function --function-name test-function \
+            --code S3Bucket=lido-githubactions-lab,S3Key=${{ github.sha }}.zip \
+            --handler lambda_function.lambda_handler --runtime python3.9 \
             --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/lido-lambda-role \
-            --code S3Bucket=lido-githubactions-lab,S3Key=${{ github.sha }}.zip \  
-            --handler lambda_function.lambda_handler --runtime python3.9
+            --region=eu-north-1
+
+#            aws lambda create-function --function-name test-function \  
+#            --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/lido-lambda-role \
+#            --code S3Bucket=lido-githubactions-lab,S3Key=${{ github.sha }}.zip \  
+#            --handler lambda_function.lambda_handler --runtime python3.9
             
       - name: Wait 30 seconds  
         run: sleep 30  
