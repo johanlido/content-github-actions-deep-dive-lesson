@@ -11,7 +11,7 @@ jobs:
     env:
       BUCKET_NAME: lido-githubactions-dev
     steps:
-      - name: checkout Conditions:
+      - name: checkout Conditions
         uses: actions/checkout@v2
       - name: configure aws cli
         uses: aws-actions/configure-aws-credentials@v1
